@@ -1,7 +1,7 @@
 from tkinter import *
+from tkinter import messagebox
 import string
 import random
-import ctypes
 import sys
 
 while True:
@@ -16,13 +16,12 @@ while True:
     note = Label(text = "***Hello Friends***\nSupport : https://github.com/kamranabdullazade/createpassword\nor\nhttps://www.instagram.com/k4mran_abdullazade\n\nNOTE : You can create passwords up to 100 symbols via the program.\n",fg = "Blue")
     note.pack()
 
-    vers = Label(text="V2.0")
+    vers = Label(text="V2.0.1")
     vers.pack(side=BOTTOM)
 
 
     def about():
-        MessageBox1 = ctypes.windll.user32.MessageBoxW
-        MessageBox1(None,"Hello Friends, This program is written in Python 3.\n\nYou can create passwords up to 100 symbols via the program.\n\n\nYou can contact me at : https://www.instagram.com/k4mran_abdullazade\n\n\nDeveloper : Kamran Abdullazade\nVersion : 2.0","About", 0)
+        messagebox.showinfo("About","Hello Friends, This program is written in Python 3.\n\nYou can create passwords up to 100 symbols via the program.\n\n\nYou can contact me at : https://www.instagram.com/k4mran_abdullazade\n\n\nDeveloper : Kamran Abdullazade\nVersion : 2.0.1")
 
 
     menu = Menu()
@@ -80,20 +79,17 @@ while True:
             b = character + character + character + character + character
 
         elif che1.get() == 0 and che2.get() == 0 and che3.get() == 0 and che4.get() == 0:
-            MessageBox1 = ctypes.windll.user32.MessageBoxW
-            MessageBox1(None, "Please mark at least one option.", "Warning", 0)
+            messagebox.showwarning("Warning","Please mark at least one option.")
 
 
         c = []
         random.shuffle(b)
         m1 = int(m.get())
         if m1 > 100:
-            MessageBox1 = ctypes.windll.user32.MessageBoxW
-            MessageBox1(None, "Please enter a maximum number of 100.", "Warning", 0)
+            messagebox.showwarning("Warning","Please enter a maximum number of 100.")
 
         elif m1 < 4:
-            MessageBox1 = ctypes.windll.user32.MessageBoxW
-            MessageBox1(None, "Please enter a minimum number of 4.", "Warning", 0)
+            messagebox.showwarning("Warning","Please enter a minimum number of 4.")
 
         else:
             if che1.get() == 1 and che2.get() == 1 and che3.get() == 1 and che4.get() == 1:
@@ -190,14 +186,13 @@ while True:
 
 
         print(u)
+
+        messagebox.showinfo("Copied to Clipboard","Copied to Clipboard : {}".format(u))#
         window.withdraw()
         window.clipboard_clear()
         window.clipboard_append(u)
         window.update()
         window.destroy()
-        MessageBox = ctypes.windll.user32.MessageBoxW
-        MessageBox(None, "Copied to Clipboard : {}".format(u), "Copied to Clipboard", 0)
-
 
     def exit():
         sys.exit()
